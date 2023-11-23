@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class PerfilComponent {
 
+
+/*   getAvatar() {
+    this.serveifbstorageService.getAvatar().subscribe(dades => {
+    this.avatarSeleccionat=<Avatar> dades
+      if (dades != null) {
+      this.urlAvatar=this.avatarSeleccionat.url
+      this.usuari=this.avatarSeleccionat.usuari
+      this.avatarVell=this.avatarSeleccionat.nomfitxer
+      }
+    })
+  } */
+
 }
