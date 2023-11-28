@@ -1,4 +1,4 @@
-export class Perfil {
+export class Avatar {
     usuari!: string
     nomfitxer!: string
     url!: string
