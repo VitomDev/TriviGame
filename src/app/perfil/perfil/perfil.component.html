@@ -1,0 +1,43 @@
+<head>
+  <meta charset="utf-8" />
+  <title>TriviGame</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<app-menu-nav></app-menu-nav>
+<main>
+  <article class="flex justify-around mt-5 h-150">
+    <section
+      id="uploadPhotoMenu"
+      class="w-3/12 h-120 bg-gray-200 rounded-2xl flex flex-col justify-center items-center"
+    >
+      <img src="../../../assets/img/userPhoto.png" alt="user photo" />
+      <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer">Upload</button>
+    </section>
+    <section id="changeParams" class="w-7/12 h-120 bg-gray-200 rounded-2xl flex flex-col justify-center items-start ml-4 p-4">
+        <form id="formchangeParams" class="flex flex-col w-full">
+          <label for="changeName" class="mb-2">Canviar nom: </label>
+          <input type="text" name="changeName" id="changeName" class="border-gray-300 border-solid border-2 rounded-md mb-2 px-4 py-2 w-full" />
+          <label for="changePass" class="mb-2">Canviar contrassenya: </label>
+          <input type="text" name="changePass" id="changePass" class="border-gray-300 border-solid border-2 rounded-md mb-2 px-4 py-2 w-full" />
+          <label for="confirmPass" class="mb-2">Contrassenya actual: </label>
+          <input type="text" name="confirmPass" id="confirmPass" class="border-gray-300 border-solid border-2 rounded-md mb-2 px-4 py-2 w-full" />
+          <input type="submit" value="Canviar" class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer" />
+        </form>
+        <div class="flex mt-5 w-full">
+            <input type="submit" value="Log out" class="flex-1 bg-red-500 text-black px-4 py-2 rounded-md cursor-pointer" />
+            <div class="w-4"></div>
+            <input type="submit" value="Delete profile" class="flex-1 bg-red-500 text-black px-4 py-2 rounded-md cursor-pointer" />
+          </div>          
+      </section>      
+  </article>
+</main>
+<aside></aside>
+<footer class="bg-gradient-to-r from-green-500 to-blue-500 text-black p-4 text-center fixed bottom-0 w-full">
+  <p>&copy; 2023 TriviGames: Agenda 2030</p>
+  <a href="https://cads.gencat.cat/ca/Agenda_2030/index.html" target="_blank" class="inline-block mt-2">
+    <img src="../../../assets/img/logoWeb.png" alt="Logo Web oficial" class="w-16"/>
+  </a>
+</footer>

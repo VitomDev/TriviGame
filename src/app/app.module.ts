@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environment';
+import { MenuNavComponent } from './menu-nav/menu-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { environment } from 'src/environment';
     PerfilComponent,
     JuegoComponent,
     FinalJuegoComponent,
-    AddPreguntaComponent
+    AddPreguntaComponent,
+    MenuNavComponent
   ],
   imports: [
     BrowserModule,
