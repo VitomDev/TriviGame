@@ -8,7 +8,8 @@ import { PerfilComponent } from './perfil/perfil/perfil.component';
 import { JuegoComponent } from './juego/juego/juego.component';
 import { FinalJuegoComponent } from './juego/final-juego/final-juego.component';
 import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.component';
-
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,9 @@ import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
