@@ -1,74 +1,89 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from '../services/perfil.service';
 import { Avatar } from '../../../modelsdedades/Perfil/perfil';
-import { modificarPerfil } from 'src/modelsdedades/modificarperfil';
+import { modificarPerfil } from 'src/modelsdedades/Perfil/modificarperfil';
 import { Router } from '@angular/router';
-
+import { usuarios } from 'src/modelsdedades/Perfil/usuario';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.css'],
 })
-export class PerfilComponent implements OnInit{
+export class PerfilComponent implements OnInit {
+
   llistaFitxers?: FileList; // només n'hi haurà un però treballem genèricament amb una llista
   avatarSeleccionat?: Avatar;
-  avatarVell=''
-  urlAvatar=''
-  usuari=''
+  avatarVell = '';
+  urlAvatar: string = '';
+  usuari: usuarios | undefined
   tpc = 0; // percentatge de càrrega al pujar la imatge
 
+  entrada: modificarPerfil = { usuari: '', passwd: '' };
 
-  entrada: modificarPerfil = {usuari: '', passwd:'' };
+  constructor(private serveiPerfil: PerfilService, private router: Router) {}
 
-
-  constructor(private serveiPerfil: PerfilService, private router: Router) { }
-  
   ngOnInit(): void {
-    this.getAvatar()
-
+    this.getUsuari();
+    this.usuari= JSON.parse(localStorage.getItem('datosUsuario')!);
+    //console.log(this.usuari);
+    this.urlAvatar=this.usuari!.avatar!
+    
   }
-  
+
   triarFitxer(event: any): void {
     this.llistaFitxers = event.target.files;
   }
 
-//TODO:CAMBIAR Y ADAPTAR LO NECESSARIO PARA PONER LOS ATRIBUTOS DE PERFIL, TANTO AQUI COMO EN MODELSDEDADES Y EN EL SERVCIO
-  getAvatar() {
-    this.serveiPerfil.getAvatar().subscribe(dades => {
-    this.avatarSeleccionat=<Avatar> dades
+  //TODO:CAMBIAR Y ADAPTAR LO NECESSARIO PARA PONER LOS ATRIBUTOS DE PERFIL, TANTO AQUI COMO EN MODELSDEDADES Y EN EL SERVCIO
+  getUsuari() {
+    this.serveiPerfil.getUsuari().subscribe((dades) => {
+      //console.log(dades);
       if (dades != null) {
-      this.urlAvatar=this.avatarSeleccionat.url
-      this.usuari=this.avatarSeleccionat.usuari
-      this.avatarVell=this.avatarSeleccionat.nomfitxer
+        localStorage.setItem('datosUsuario',JSON.stringify(dades))
       }
-    })
+    });
   }
 
   pujarFitxer(): void {
     if (this.llistaFitxers) {
-    const imatge: File | null = this.llistaFitxers.item(0); // agafem el primer (únic)
-    this.llistaFitxers = undefined;
-    if (imatge) {
-    this.avatarSeleccionat = new Avatar(imatge); // fem una instància de la classeAvatar utilizant el constructor al que li passem el fitxer a pujar
-    // primer eliminem l'avatar antic si existia
-    this.serveiPerfil.eliminarFitxer(this.avatarSeleccionat!, this.avatarVell)
-    // inserim el nou avatar
-    this.serveiPerfil.pushFitxer(this.avatarSeleccionat).subscribe(percentatge => {
-    this.tpc = Math.round(percentatge ? percentatge : 0);
-    this.getAvatar()
-    },
-    error => {
-    console.log(error);
-    }
-    );
-    }
+      const imatge: File | null = this.llistaFitxers.item(0); // agafem el primer (únic)
+      this.llistaFitxers = undefined;
+      if (imatge) {
+        this.avatarSeleccionat = new Avatar(imatge); // fem una instància de la classeAvatar utilizant el constructor al que li passem el fitxer a pujar
+        // primer eliminem l'avatar antic si existia
+        this.serveiPerfil.eliminarFitxer(
+          this.avatarSeleccionat!,
+          this.avatarVell
+        );
+        // inserim el nou avatar
+        this.serveiPerfil.pushFitxer(this.avatarSeleccionat).subscribe(
+          (percentatge) => {
+            this.tpc = Math.round(percentatge ? percentatge : 0);
+            this.getUsuari();
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
     }
   }
 
   modificarPerfil() {
-    
     this.serveiPerfil.modificarPerfil(this.entrada);
     this.router.navigateByUrl('/perfil');
   }
 
+  ferDeleteProfile() {
+    throw new Error('Method not implemented.');
+
+
+    this.logout(); /* TODO: MIRAR SI SE PUEDE LLAMAR A LA FUNCION */
+  }
+
+  logout() {
+    localStorage.removeItem('datosUsuario'); 
+    this.router.navigateByUrl('/login'); 
+  }
+  
 }

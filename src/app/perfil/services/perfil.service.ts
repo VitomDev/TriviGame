@@ -3,21 +3,21 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { Observable, finalize } from 'rxjs';
 import { Avatar } from '../../../modelsdedades/Perfil/perfil';
-import { modificarPerfil } from 'src/modelsdedades/modificarperfil';
+import { modificarPerfil } from 'src/modelsdedades/Perfil/modificarperfil';
 @Injectable({
   providedIn: 'root'
 })
 export class PerfilService {
-  bdPerfil = '/perfil/'
+  bdPerfil = '/Usuaris/'
   email: any;
   comodi = "PUNT" // com que Firebase no admet el "." en els identificadors de node fem un artifici canviant-lo per la paraula PUNT en majúscules
   llistaFitxers?: FileList;
   avatarSeleccionat?: Avatar;
-
+  usuario="adminPrueba";
 
   constructor(private bd: AngularFireDatabase, private magatzem: AngularFireStorage) { }
   ngOnInit(): void {
-    this.getAvatar()
+    this.getUsuari()
   }
   
   pushFitxer(av: Avatar): Observable<number | undefined> {
@@ -41,9 +41,8 @@ export class PerfilService {
   }
 
 
-  getAvatar() {
-    var id = this.email = this.email = localStorage.getItem("email")?.toString().replace(".", this.comodi)
-    return this.bd.object(this.bdPerfil + id).valueChanges();
+  getUsuari() {
+    return this.bd.object(this.bdPerfil + this.usuario).valueChanges();
   }
 
   eliminarFitxer(pe: Avatar, fitxerVell: string): void {
@@ -66,19 +65,31 @@ export class PerfilService {
     refMagatzem.child('/' + nomFitxer).delete();
   }
 
-  
-
   modificarPerfil(entrada: modificarPerfil){
     const dades = {
       usuari: entrada.usuari,
       passwd: entrada.passwd,
       passwdActual: entrada.passwdActual
-    }
-
+    }  
+    /* Comparar contraseñas  */
+  /*   if (dades.passwdActual == ) {
+      
+    } */
     this.bd.object(this.bdPerfil).update(dades)
     .then(d => { console.log("Dades modificades correctament") })
     .catch(error => { console.log("Error") })
-  }
+  } 
 
+/*   sHaDesConnectat() {
+    const dades = {
+        op: 'logout',
+        usuari: this.usuario.email,
+        data: Date() 
+      }
+      localStorage.removeItem("datosUsuario")
+      this.bd.object(this.bdPerfil+Date().toString()).update(dades) // update equival a insert si no existeix l'element
+      .then( d => { console.log("Dades inserides correctament") })
+      .catch( error => { console.log("Error accedint al Log") })
+    }  */
 
 }
