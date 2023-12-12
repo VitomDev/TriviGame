@@ -1,5 +1,5 @@
 export class modificarPerfil{
-    usuari?: string;
-    passwd?: string;
-    passwdActual?: string;
+    username?: string;
+    contrasenya?: string;
+    contrasenyaActual?:string;
 }

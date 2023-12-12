@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from '../perfil/services/perfil.service';
 import { usuarios } from 'src/modelsdedades/Perfil/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-nav',
@@ -8,10 +9,12 @@ import { usuarios } from 'src/modelsdedades/Perfil/usuario';
   styleUrls: ['./menu-nav.component.css']
 })
 export class MenuNavComponent implements OnInit{
+
+
   urlAvatar: string = '';
   usuari: usuarios | undefined
 
-  constructor(private serveiPerfil: PerfilService) {}
+  constructor(private serveiPerfil: PerfilService,private router: Router) {}
   ngOnInit(): void {
     this.getUsuari();
     this.usuari= JSON.parse(localStorage.getItem('datosUsuario')!);
@@ -27,4 +30,9 @@ export class MenuNavComponent implements OnInit{
       }
     });
   }
+  //TODO:COMPROBAR QUE LA REDIRECCION SEA LA CORRECTA
+  navigateToAddQuestion() {
+    this.router.navigateByUrl('/add-pregunta');   
+  }
+
 }

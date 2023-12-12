@@ -12,5 +12,5 @@ export class usuarios {
     qttPreguntesContestades?: number;
     ultimAcces?: string;
     baja?: boolean;
-    solicituBaja?: string;
+    solicitutBaja?: string;
 }

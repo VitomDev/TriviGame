@@ -9,12 +9,14 @@
 <main>
   <app-menu-nav></app-menu-nav>
   <article class="flex justify-around mt-5 h-150">
-    <section
-      id="uploadPhotoMenu"
-      class="w-3/12 h-120 bg-gray-200 rounded-2xl flex flex-col justify-center items-center">
-      <img src="{{ urlAvatar }}" alt="user photo" style="width:200px"/>
-      <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer">Upload</button>
-    </section>
+    <section id="uploadPhotoMenu" class="p-4">
+      <div class="dropzone w-full md:w-1/2 lg:w-1/4 h-auto border-2 border-dashed border-gray-300 rounded-full mx-auto overflow-hidden relative bg-cover bg-center bg-no-repeat"
+          style="background-image: url('{{ urlAvatar }}');"
+          (dragover)="onDragOver($event)"
+          (drop)="onDrop($event)">
+        <!-- La imagen se agrega como fondo con Tailwind CSS para el control de tamaño responsivo -->
+      </div>
+    </section>  
     <section
       id="changeParams"
       class="w-7/12 h-120 bg-gray-200 rounded-2xl flex flex-col justify-center items-start ml-4 p-4">
@@ -37,7 +39,7 @@
           name="confirmPass"
           id="confirmPass"
           class="border-gray-300 border-solid border-2 rounded-md mb-2 px-4 py-2 w-full"/>
-        <input (click)="modificarPerfil()"
+        <input (click)="editProfile()"
           type="submit"
           value="Canviar"
           class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer"/>
@@ -47,11 +49,11 @@
           type="submit"
           value="Log out"
           class="flex-1 bg-red-500 text-black px-4 py-2 rounded-md cursor-pointer"/>
-        <div class="w-4"></div>
-        <input (click)="ferDeleteProfile()"
+        <div class="w-4"></div> <!-- TODO: ponerlo en la confirmacion en el button aceptar de seguro que se quiere dar de baja? -->
+        <input (click)="unsubscribe()"  
           type="submit"
           value="Delete profile"
-          class="flex-1 bg-red-500 text-black px-4 py-2 rounded-md cursor-pointer"/>
+          class="flex-1 bg-red-500 text-black px-4 py-2 rounded-md cursor-pointer"/> 
       </div>
     </section>
   </article>
@@ -63,6 +65,3 @@
     <img src="../../../assets/img/logoWeb.png" alt="Logo Web oficial" class="w-16"/>
   </a>
 </footer>
-
-
-

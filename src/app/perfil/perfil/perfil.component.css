@@ -1,0 +1,24 @@
+.dropzone {
+width: 26vw; /* Ajusta al ancho que desees */
+height: 26vw; /* Ajusta a la altura que desees */
+border: 2px dashed #ccc;
+border-radius: 10px;
+padding: 20px;
+text-align: center;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.dropzone:hover,
+.dropzone.dragover {
+background-color: #f0f0f0;
+}
+
+
+
+/* Establece un tamaño máximo para la imagen para que no se salga del área de arrastrar y soltar */
+.dropzone img {
+max-width: 100%; /* Asegura que la imagen no sea más ancha que el contenedor */
+max-height: 100%; /* Asegura que la imagen no sea más alta que el contenedor */
+border-radius: 50%; /* Para mantener la forma circular */
+}

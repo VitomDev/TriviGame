@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
-import { Observable, finalize } from 'rxjs';
-import { Avatar } from '../../../modelsdedades/Perfil/perfil';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Observable } from 'rxjs';
 import { modificarPerfil } from 'src/modelsdedades/Perfil/modificarperfil';
 @Injectable({
   providedIn: 'root'
@@ -10,86 +9,100 @@ import { modificarPerfil } from 'src/modelsdedades/Perfil/modificarperfil';
 export class PerfilService {
   bdPerfil = '/Usuaris/'
   email: any;
+  psw = ''
   comodi = "PUNT" // com que Firebase no admet el "." en els identificadors de node fem un artifici canviant-lo per la paraula PUNT en majúscules
-  llistaFitxers?: FileList;
-  avatarSeleccionat?: Avatar;
   usuario="adminPrueba";
+  avatar="/avatar";
 
   constructor(private bd: AngularFireDatabase, private magatzem: AngularFireStorage) { }
   ngOnInit(): void {
     this.getUsuari()
   }
-  
-  pushFitxer(av: Avatar): Observable<number | undefined> {
-    const rutaFitxer = this.bdPerfil + av.fitxer.name
-    const refMagatzem = this.magatzem.ref(rutaFitxer)
-    const pujarFitxer = this.magatzem.upload(rutaFitxer, av.fitxer)
-    pujarFitxer.snapshotChanges().pipe(finalize(() => {
-    refMagatzem.getDownloadURL().subscribe(url => { // getDownloadURL() ens donarà la URL una vegada s'ha pujat el fitxer a l'Storage
-    // ho fem per a guardar-lo en la base de dades en el camp url
-    av.usuari = this.email = localStorage.getItem("email")! // obtenim l'email que hem guardat al localStorage al fer login
-    // el signe ! és per a evitar l'error de que el valor pot ser null o undefined
-    av.url = url
-    av.nomfitxer = av.fitxer.name
-    this.bd.object(this.bdPerfil + av.usuari?.replace(".", this.comodi)).update(av)
-    .then(d => { console.log("Dades inserides correctament") })
-    .catch(error => { console.log("Error accedint als Avatars") })
-    });
-    })
-  ).subscribe();
-  return pujarFitxer.percentageChanges();
-  }
-
 
   getUsuari() {
+    /* TODO: CUANDO LO PONGAMOS BIEN COJERA EL USERNAME DEL LOCALSTORAGE NO EL THIS.USUARIO */
     return this.bd.object(this.bdPerfil + this.usuario).valueChanges();
   }
 
-  eliminarFitxer(pe: Avatar, fitxerVell: string): void {
-    var id = pe.usuari?.toString().replace(".", this.comodi)
-    this.eliminarFitxerDelMagatzem(fitxerVell);
-    this.eliminarAvatarBaseDades(id)
-      .then(() => {
-      })
-      .catch(error => console.log(error));
-  }
-
-  // treiem l'avatar de la base de dades
-  private eliminarAvatarBaseDades(id: string): Promise<void> {
-    return this.bd.list(this.bdPerfil).remove(id);
-  }
-
-  // treiem el fitxer de l'Storage (magatzem)
-  private eliminarFitxerDelMagatzem(nomFitxer: string): void {
-    const refMagatzem = this.magatzem.ref(this.bdPerfil);
-    refMagatzem.child('/' + nomFitxer).delete();
-  }
-
-  modificarPerfil(entrada: modificarPerfil){
+//TODO: mirar el username y comprobar que no este vacio y poner min 8 caracteres dos letras como minimo y una mayus etc en el passwd
+  modificarPerfil(entrada: modificarPerfil, userId: string){
     const dades = {
-      usuari: entrada.usuari,
-      passwd: entrada.passwd,
-      passwdActual: entrada.passwdActual
+      username: entrada.username,
+      contrasenya: entrada.contrasenya,
     }  
-    /* Comparar contraseñas  */
-  /*   if (dades.passwdActual == ) {
+
+    const contrasenyaActual = entrada.contrasenyaActual;
+    
+//TODO:mirar si el user esta empty
+//todo:mirar la new passwd esta empty
+//todo:restringir tod a nombre mas de 2 caracteres y paswd a mas de 8 caracteres
+//TODO:comprobar que la passwd coincida con la de la bbdd
+
+    if (dades.username && dades.username.trim() !== '') {
       
-    } */
-    this.bd.object(this.bdPerfil).update(dades)
-    .then(d => { console.log("Dades modificades correctament") })
-    .catch(error => { console.log("Error") })
+      if ( contrasenyaActual == localStorage.getItem("contrasenya")) {
+      
+        this.bd.object(`${this.bdPerfil}/${userId}`).update(dades)
+        .then(d => { console.log("Dades modificades correctament") })
+        .catch(error => { console.log("Error") })
+      } else{
+        console.log("La contrasenya no es vàlida")
+      }
+    }else{
+      console.log("L'usuari o la contrasenya no són vàlids")
+    }
   } 
 
-/*   sHaDesConnectat() {
+  uploadAvatarBase64(base64Image: string, userId: string): Observable<any> {
+    return new Observable(subscriber => {
+      this.bd.object(`${this.bdPerfil}/${userId}`).update({ avatar: base64Image })
+        .then(() => {
+          subscriber.next(100); // Indica un progreso del 100%
+          subscriber.complete();
+        })
+        .catch(error => {
+          subscriber.error(error);
+        });
+    });
+  }
+
+donarseDeBaixa(userId: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const avui = new Date();
+    const dataExpiracio = this.addDays(avui, 15); 
+    const solicitudBaja = avui; 
+  
+    // Formatea las fechas
     const dades = {
-        op: 'logout',
-        usuari: this.usuario.email,
-        data: Date() 
-      }
-      localStorage.removeItem("datosUsuario")
-      this.bd.object(this.bdPerfil+Date().toString()).update(dades) // update equival a insert si no existeix l'element
-      .then( d => { console.log("Dades inserides correctament") })
-      .catch( error => { console.log("Error accedint al Log") })
-    }  */
+      dataExpiracio: this.formatDateToDDMMYYYY(dataExpiracio),
+      solicitutBaja: this.formatDateToDDMMYYYY(solicitudBaja), 
+    };
+    this.bd.object(`${this.bdPerfil}/${userId}`).update(dades)
+      .then(() => {
+        console.log('Baja y expiración actualizadas con éxito');
+        resolve();
+      })
+      .catch(error => {
+        console.error('Error al actualizar la baja y expiración', error);
+        reject(error);
+      });
+  });
+}
+
+// Función auxiliar para añadir días a una fecha
+private addDays(date: Date, days: number): Date {
+  let result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+// Función auxiliar para formatear la fecha en el formato DD/MM/YYYY
+private formatDateToDDMMYYYY(date: Date): string {
+  return date.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+}
 
 }

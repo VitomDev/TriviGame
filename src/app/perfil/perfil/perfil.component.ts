@@ -1,89 +1,111 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from '../services/perfil.service';
-import { Avatar } from '../../../modelsdedades/Perfil/perfil';
 import { modificarPerfil } from 'src/modelsdedades/Perfil/modificarperfil';
 import { Router } from '@angular/router';
 import { usuarios } from 'src/modelsdedades/Perfil/usuario';
 @Component({
-  selector: 'app-perfil',
-  templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css'],
+selector: 'app-perfil',
+templateUrl: './perfil.component.html',
+styleUrls: ['./perfil.component.css'],
 })
+
 export class PerfilComponent implements OnInit {
+urlAvatar: string = '';
+usuari: usuarios | undefined
+entrada: modificarPerfil = { username: '', contrasenya: '' };
 
-  llistaFitxers?: FileList; // només n'hi haurà un però treballem genèricament amb una llista
-  avatarSeleccionat?: Avatar;
-  avatarVell = '';
-  urlAvatar: string = '';
-  usuari: usuarios | undefined
-  tpc = 0; // percentatge de càrrega al pujar la imatge
+constructor(private serveiPerfil: PerfilService, private router: Router) {}
 
-  entrada: modificarPerfil = { usuari: '', passwd: '' };
+ngOnInit(): void {
+  this.getUsuari();
+  this.usuari = JSON.parse(localStorage.getItem('datosUsuario')!);
+  //console.log(this.usuari);
+  this.urlAvatar = this.usuari!.avatar!
+}
 
-  constructor(private serveiPerfil: PerfilService, private router: Router) {}
+getUsuari() {
+  this.serveiPerfil.getUsuari().subscribe((dades) => {
+    //console.log(dades);
+    if (dades != null) {
+      localStorage.setItem('datosUsuario',JSON.stringify(dades))
+    }
+  });
+}
 
-  ngOnInit(): void {
-    this.getUsuari();
-    this.usuari= JSON.parse(localStorage.getItem('datosUsuario')!);
-    //console.log(this.usuari);
-    this.urlAvatar=this.usuari!.avatar!
-    
-  }
+onDragOver(event: DragEvent) {
+  event.preventDefault();
+  event.stopPropagation();
+}
 
-  triarFitxer(event: any): void {
-    this.llistaFitxers = event.target.files;
-  }
-
-  //TODO:CAMBIAR Y ADAPTAR LO NECESSARIO PARA PONER LOS ATRIBUTOS DE PERFIL, TANTO AQUI COMO EN MODELSDEDADES Y EN EL SERVCIO
-  getUsuari() {
-    this.serveiPerfil.getUsuari().subscribe((dades) => {
-      //console.log(dades);
-      if (dades != null) {
-        localStorage.setItem('datosUsuario',JSON.stringify(dades))
-      }
-    });
-  }
-
-  pujarFitxer(): void {
-    if (this.llistaFitxers) {
-      const imatge: File | null = this.llistaFitxers.item(0); // agafem el primer (únic)
-      this.llistaFitxers = undefined;
-      if (imatge) {
-        this.avatarSeleccionat = new Avatar(imatge); // fem una instància de la classeAvatar utilizant el constructor al que li passem el fitxer a pujar
-        // primer eliminem l'avatar antic si existia
-        this.serveiPerfil.eliminarFitxer(
-          this.avatarSeleccionat!,
-          this.avatarVell
-        );
-        // inserim el nou avatar
-        this.serveiPerfil.pushFitxer(this.avatarSeleccionat).subscribe(
-          (percentatge) => {
-            this.tpc = Math.round(percentatge ? percentatge : 0);
-            this.getUsuari();
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      }
+onDrop(event: DragEvent) {
+  event.preventDefault();
+  if (event.dataTransfer && event.dataTransfer.files) {
+    const file = event.dataTransfer.files[0]; 
+    if (file) {
+      this.readAndUploadImage(file);
     }
   }
+}
 
-  modificarPerfil() {
-    this.serveiPerfil.modificarPerfil(this.entrada);
-    this.router.navigateByUrl('/perfil');
-  }
+readAndUploadImage(file: File) {
+  const userId = this.usuari?.username || 'adminPrueba';  
+  const reader = new FileReader();
 
-  ferDeleteProfile() {
-    throw new Error('Method not implemented.');
+  reader.onload = () => {
+    const base64Image = reader.result as string;
+    console.log('Imagen en base64:', base64Image);
 
+    this.serveiPerfil.uploadAvatarBase64(base64Image, userId).subscribe(
+      percentage => {
+        console.log(`Carga en progreso: ${percentage}%`);
+      },
+      error => {
+        console.error('Error al subir la imagen:', error);
+      },
+      () => {
+        console.log('Carga de imagen completada');
+        window.location.reload(); 
+      }
+    );
+  };
+  reader.readAsDataURL(file); 
+}
 
-    this.logout(); /* TODO: MIRAR SI SE PUEDE LLAMAR A LA FUNCION */
-  }
+editProfile() {
+  const userId = this.usuari?.username || 'adminPrueba';  
+  this.serveiPerfil.modificarPerfil(this.entrada, userId);
+  this.router.navigateByUrl('/perfil');
+}
 
-  logout() {
-    localStorage.removeItem('datosUsuario'); 
-    this.router.navigateByUrl('/login'); 
-  }
-  
+// TODO: poner solicituBaja, esta mal escrito (solicitudBaja)
+unsubscribe() {
+  const userId = this.usuari?.username || 'adminPrueba'; 
+
+  this.serveiPerfil.donarseDeBaixa(userId).then(() => {
+    console.log('Peticion de baja procesada correctamente.');
+    this.logout(); 
+  }).catch(error => {
+    console.error('Error al procesar la baja del usuario:', error);
+  });
+}
+
+logout() {
+  localStorage.removeItem('datosUsuario'); 
+  this.router.navigateByUrl('/login'); 
+} 
+
+  /**
+   * MyMethod
+   * * Important information is highlighted
+   * ! Deprecated method, do not use
+   * ? Should this method be exposed in the public API?
+   * TODO: refactor this method so that it conforms to the API
+   * @param myParam The parameter for this method
+   */
+    // This is highlighted
+    //? This is a query
+        // Commented out code can also be styled
+    //// this line of code is commented out
+    // TODO: Create some test cases
+
 }
