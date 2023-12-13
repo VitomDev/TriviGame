@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    padding:0;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #000;
+    background: #AAE8FF; 
+    font-size: 1em;
+  }
+  
+  #cabecera{
+    background: linear-gradient(90deg, #0097b2, #7ed957);
+    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
+    left: 0; /* Posicionamos la cabecera al lado izquierdo */
+    top: 0; /* Posicionamos la cabecera pegada arriba */
+    position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+    height: 5rem;
+  }
+  
+  #user{
+    float: left;
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #preguntas{
+    height: 100%;
+    float: right;
+    margin-right: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #cabecera a{
+    margin-left: 2em;
+  }
+  
+  #home{
+  margin-top: 10rem;
+  }
+  
+  img{
+    
+    width: 3em;
+    height: 3em;
+    float: left;
+  }
+  
+  #play{
+    float: right;
+    background-color: #00A651;
+    padding: 9em;
+    margin-top: 2em;
+    margin-right: 2em;
+    border-radius: 1em;
+  }
+  
+  #ranking{
+    float: left;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    width: 50%;
+    
+  }
+  
+  thead{
+  position: sticky;
+  top: 0;
+  background-color: chartreuse;
+  }
+  
+  #ranking table{
+    border-radius: 2em;
+    background-color: #D8C8FF;
+    padding: 2rem;
+    font-size: 1.5em;
+    width: 100%;
+    height: 70%;
+  }
+  
+  tbody{
+    background-color: #00A651;
+    text-align: center;
+    margin-top: 1em;
+  }
+  
+  #tabla{
+    line-height: 1em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 15em;
+    background-color: #510cff;
+    width: auto;
+     /*Firefox*/
+    scrollbar-color: linear-gradient(90deg, #0097b2, #7ed957);
+    scrollbar-width: thin;
+  }
+  /*Webkit*/
+  section::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 1em;
+  }
+  section::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 1em;
+  
+  }
+  section::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #0097b2, #7ed957);
+    border-radius: 1em;
+  
+  }
+  
+  td{
+    width: 30%;
+    padding: 0.2em;
+  }
+  
+  select {
+    background: transparent;
+    width: 100%;
+    font-size: 1em;
+    height: 2em;
+    border-bottom: 2px solid;
+    border-top:#000;
+    border-left:#000;
+    border-right:#000;
+    
+    width: 20%;
+  }
+  
+  tfoot{
+    position: sticky;
+    bottom: 0;
+    margin-left: 1.5rem;
+    background-color:crimson;
+    text-align: center;
+  }
+  
+  h3{
+    margin: 0.3rem;
+    float: left;
+    align-items: center;
+    justify-content: center;
+  }
