@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MenuNavComponent implements OnInit{
 
-
+  username: string = '';
   urlAvatar: string = '';
   usuari: usuarios | undefined
 
@@ -20,6 +20,7 @@ export class MenuNavComponent implements OnInit{
     this.usuari= JSON.parse(localStorage.getItem('datosUsuario')!);
     //console.log(this.usuari);
     this.urlAvatar=this.usuari!.avatar!
+    this.username = this.usuari?.username || 'Sabemos que eres hacker vete de aqui';
   }
 
   getUsuari() {
