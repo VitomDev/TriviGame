@@ -1,117 +1,118 @@
 <!DOCTYPE html>
-        <div id="cabecera">
-            <div id="user">
-                <img src="../../../assets/iconoPerfil.png" alt="">
-                <a>User</a>
-            </div>
-
-            <div id="preguntas">
-                <p>?/10</p>
-            </div>
+<html>
+<head>
+<title>Home</title>
+</head>
+<body>
+    <div id="cabecera">
+        <div id="user">
+            <img src="../../../assets/home/iconoPerfil.png" alt="">
+            <a>User</a>
         </div>
+        <div id="preguntas">
+            <p>?/10</p>
+        </div>
+    </div>
+    <div id="home">
+        <div id="ranking">
+            <table >
+                <section id="tabla">
+                    <!-- NECCESSITO TENIR CONNEXIÓ AMB LA BDs AMB EL TS-->
+                    <thead>
+                        <tr>
+                            <th>POSICIO</th>
+                            <th>NOM</th>
+                            <th>PUNTS</th>
+                            <th>CLASSE</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>adri</td>
+                            <td>120</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>adri</td>
+                            <td>110</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>adri</td>
+                            <td>100</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>adri</td>
+                            <td>90</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>adri</td>
+                            <td>80</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>adri</td>
+                            <td>70</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>adri</td>
+                            <td>60</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>adri</td>
+                            <td>50</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>adri</td>
+                            <td>40</td>
+                            <td>DAM</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>adri</td>
+                            <td>30</td>
+                            <td>DAM</td>
+                        </tr>
+                    </tbody>
 
-        <div id="home">
-            <div id="ranking">
-                <table>
-                    <section id="tabla">
-                        <thead>
-                            <tr>
-                                <th>POSICIO</th>
-                                <th>NOM</th>
-                                <th>PUNTS</th>
-                                <th>CLASSE</th>
-                            </tr>
-                        </thead>  
-                    
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>adri</td>
-                                <td>120</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>adri</td>
-                                <td>110</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                    <td>3</td>
-                                <td>adri</td>
-                                <td>100</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                    <td>4</td>
-                                <td>adri</td>
-                                <td>90</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                    <td>5</td>
-                                <td>adri</td>
-                                <td>80</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                    <td>6</td>
-                                <td>adri</td>
-                                <td>70</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                    <td>7</td>
-                                <td>adri</td>
-                                <td>60</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                    <td>8</td>
-                                <td>adri</td>
-                                <td>50</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                    <td>9</td>
-                                <td>adri</td>
-                                <td>40</td>
-                                <td>DAM</td>
-                            </tr>
-                            <tr>
-                                    <td>10</td>
-                                <td>adri</td>
-                                <td>30</td>
-                                <td>DAM</td>
-                            </tr>
-                        </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <td>23</td>
-                                <td>YOU</td>
-                                <td>10</td>
-                                <td>DAM</td>
-                            </tr> 
-                        </tfoot>
-                        
-                    </section>
-                </table>
+                    <tfoot>
+                        <tr>
+                            <th>23</th>
+                            <th>YOU</th>
+                            <th>10</th>
+                            <th>DAM</th>
+                        </tr> 
+                    </tfoot>
+                </section>
+            </table>
                 <br>
-                <div>
-                    <h3 id="titolClasse">CLASSE:</h3>
-                    <select name="classe" id="classe">
-                        <option value="todos">TOTS</option>
-                        <option value="dam">DAM</option>
-                        <option value="ASIX">ASIX</option>
-                        <option value="ga">GA</option>
-                        <option value="aif">AIF</option>
-                    </select>
-                </div>
-
+            <div>
+                <h3 id="triarClasse">FILTRAR: </h3>
+                <select name="classe" id="classe">
+                    <option value="todos">CLASSE</option>
+                    <option value="dam">DAM</option>
+                    <option value="ASIX">ASIX</option>
+                    <option value="ga">GA</option>
+                    <option value="aif">AIF</option>
+                </select>
             </div>
-
-            <div id="play"> 
-            </div>
-        
         </div>
+        <a id="boto" href="../../juego/juego/juego.component.html"></a>
+    </div>
+</body>
+</html>

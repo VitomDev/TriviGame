@@ -10,6 +10,7 @@ import { usuarios } from '../modelDades/usuarios';
 
 export class HomeComponent {
 
+  /* NO AGAFA
   //constructor(public home: HomeService) { }
 
   /*getUsuari(){
@@ -17,4 +18,6 @@ export class HomeComponent {
       localStorage.setItem('dadesUsuari', JSON.stringify(dades));
     });
   }*/
+
 }
+
