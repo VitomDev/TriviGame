@@ -1,19 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" type="text/css" href="juego.component.css">
+    <link rel="stylesheet" type="text/css" href="juego.component.css" />
     <title>Document</title>
-</head>
-<body> 
-    <div>   
-        <h1 class="text-3xl font-bold underline">
-            En construcción
-        </h1>    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  </head>
+  <body class="h-screen body">
+    <div class="global" *ngIf="!torn">
+      <div id="contInfo">
+        <button id="btHome" (click)="redHome()">
+          <img src="/assets/drawable/trivigame_Logo.png" />
+        </button>
+        <div id="puntsActuals"><p>230</p></div>
+      </div>
+      <div class="containerR" id="contPregunta">
+        <div id="pregL">
+          <p id="txtPreg">
+            Quina estratègia s'enfoca a la inclusió financera i l'accés a
+            serveis financers per als més desafavorits?
+          </p>
+        </div>
+      </div>
+      <div class="containerR">
+        <div id="pregM">
+          <p id="txtPreg">
+            Quina estratègia s'enfoca a la inclusió financera i l'accés a
+            serveis financers per als més desafavorits?
+          </p>
+        </div>
+        <div id="contR">
+          <div id="contR1">
+            <button class="bnRes" (click)="respondida()">
+              <div class="btResDiv">Reduir la contaminació ambiental</div>
+            </button>
+            <button class="bnRes" (click)="respondida()">
+              <div class="btResDiv">
+                Eradicar la pobresa extrema i la pobresa relativa
+              </div>
+            </button>
+          </div>
+          <div id="contR2">
+            <button class="bnRes" (click)="respondida()">
+              <div class="btResDiv">
+                Augmentar el consum d'energies renovables
+              </div>
+            </button>
+            <button class="bnRes" (click)="respondida()"> 
+              <div class="btResDiv">Millorar la infraestructura urbana</div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="contPista">
+        <a
+          id="btPista"
+          href="https://www.un.org/sustainabledevelopment/es/climate-change-2/"
+          ><img src="/assets/drawable/category/accion_clima.png"
+        /></a>
+      </div>
     </div>
- </body>
+
+    <div *ngIf="torn">
+      <div id="container">
+        <div id="containerP">
+          <img src="../../../assets/drawable/logo.png" id="logo" />
+          <div id="numP">
+            <p>Pregunta {{numP}}</p>
+          </div>
+          <div id="preg">
+            <p>
+              Quina mesura es considera essencial per combatre la pobresa segons l'ODS?
+            </p>
+          </div>
+          <div id="progress_bar">
+            <div id="progress_fill" [ngClass]="{'fill-animation': true}" [style.width.%]="porcentajeAnimacion"></div>
+          </div>
+          <p id="progress">{{numP}}/10</p>
+        </div>
+        <div id="buttonnextq">
+          <button id="nextQ" class="custom-btn btn-11" (click)="nextQuestion()">Següent pregunta!<div class="dot"></div></button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
-
-
