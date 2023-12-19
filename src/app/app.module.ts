@@ -8,6 +8,8 @@ import { PerfilComponent } from './perfil/perfil/perfil.component';
 import { JuegoComponent } from './juego/juego/juego.component';
 import { FinalJuegoComponent } from './juego/final-juego/final-juego.component';
 import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../../src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]

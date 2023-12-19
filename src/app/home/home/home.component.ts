@@ -10,14 +10,14 @@ import { usuarios } from '../modelDades/usuarios';
 
 export class HomeComponent {
 
-  /* NO AGAFA
-  //constructor(public home: HomeService) { }
+  //EL CONSTRUCTOR PETA I NO PUC AGAFAR TOTA L'INFORMACIÓ DELS USUARIS 
+  constructor(public home: HomeService) { }
 
-  /*getUsuari(){
+  getUsuari(){
     this.home.getUsuari().subscribe((dades) => {
       localStorage.setItem('dadesUsuari', JSON.stringify(dades));
     });
-  }*/
+  }
 
 }
 
