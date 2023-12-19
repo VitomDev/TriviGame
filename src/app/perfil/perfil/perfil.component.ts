@@ -89,20 +89,33 @@ async editProfile() {
   const contrasenyaAlmacenada = this.usuari?.contrasenya;
   var regexp = new RegExp('^(?=.*[A-Z]).{8,}$') //Verificar contrasenya conté mínim 8 caracters amb una majuscula
 
-  if ((this.contrasenyaActual === contrasenyaAlmacenada) ) {
+
+
+  // TODO: Verfificar primero que el input de contraseñaActual no este vacio popup
+
+  if (this.username.trim() == '' && this.contrasenya.trim() == '' && this.contrasenyaActual.trim() == '') {
+    this.verificarPerfil("0.1.No hi cap camp omplert");
+  } else if(this.contrasenyaActual.trim() == ''){
+    this.verificarPerfil("0.2.El camp de contrasenya actual està buït");
+  }else if ((this.contrasenyaActual === contrasenyaAlmacenada)) {
     try {
-      if (this.username && this.username.trim() !== '') {
+      if (this.username.trim() == '' && this.contrasenya.trim() == '') {
+        this.verificarPerfil("0.3.No es modifica ni el username ni la contrasenya");
+      } else if (this.username && this.username.trim() !== '') {
         const usernames = await this.getUsernames();
         this.usernameExistent = usernames.includes(this.username);
 
         if (!this.usernameExistent) {
           if (this.contrasenya && this.contrasenya.trim() !== '' && (this.contrasenya === this.repeatedPassword) && (regexp.test(this.contrasenya) == true)) 
           {
+            await this.serveiPerfil.modificarPerfilContrasenya(this.contrasenya, userId);
             await this.changeUsername(userId, this.username); 
-            await this.serveiPerfil.modificarPerfilContrasenya(this.contrasenya, userId); 
-          } else if(this.contrasenya.trim() == ''){ // corregir condicio
+            
+            this.verificarPerfil("0.4.Contrasenya actualitzada");  // al cambiar la contrasenya mostar un popup diciendo que se ha modificado la contra y hacer un reload
+            window.location.reload(); 
+          } else if(this.contrasenya.trim() == ''){ 
             await this.changeUsername(userId, this.username);
-          }else if(this.contrasenya && this.contrasenya.trim() !== '' && (this.repeatedPassword && this.repeatedPassword.trim() == '')){
+          }else if(this.contrasenya && this.contrasenya.trim() !== '' && (this.repeatedPassword.trim() == '')){
             this.verificarPerfil("1.Falta confirmar la nova contrasenya.");
           } else if (this.contrasenya && this.contrasenya.trim() !== '' && (regexp.test(this.contrasenya) == false)) {
             this.verificarPerfil("2.La nova contrasenya no es vàlida.");//TODO: estos mensajes no son correctos
@@ -115,22 +128,26 @@ async editProfile() {
       } else if (this.contrasenya && this.contrasenya.trim() !== '' && (this.contrasenya === this.repeatedPassword) && (regexp.test(this.contrasenya) == true)){
         
         await this.serveiPerfil.modificarPerfilContrasenya(this.contrasenya, userId);
-        this.router.navigateByUrl('/perfil');
+        this.verificarPerfil("0.4.Contrasenya actualitzada");
+        window.location.reload(); 
       } else if(this.contrasenya && this.contrasenya.trim() == ''){
         this.verificarPerfil("5.No hi ha dades a modificar");
       } else if (regexp.test(this.contrasenya) == false) {
-        this.verificarPerfil("6.La nova contrasenya no es vàlida.");      //TODO: AQUI SI PONES UNA CONTRASEÑA NO VALIDA TE DEBE INDICAR PRIMERO QUE NO CUMPLE LOS REQUISITOS
-      } else if (this.contrasenya !== this.repeatedPassword) {          //En teoria ahora primero mira si la nueva es valida y luego ya mira si coincide con la confirmacion
-        this.verificarPerfil("7.Contrasenya nova i confirmació contrasenya no coincideixen");
+        this.verificarPerfil("6.La nova contrasenya no es vàlida.");      
+      } else if(this.repeatedPassword.trim() == ''){
+        this.verificarPerfil("7.El camp de confirmar contrassenya esta buït");
+      } else if (this.contrasenya !== this.repeatedPassword) {          
+        this.verificarPerfil("8.Contrasenya nova i confirmació contrasenya no coincideixen");
       }
     } catch (error) {
       console.error("Hubo un error al modificar el perfil:", error);
       this.verificarPerfil("Hubo un error al modificar el perfil.");
     }
   } else {
-    console.log("La contraseña actual no es correcta. peta aquiiiii");//TODO:PETA AQUI MIRAR LO DEL POPUP AQUI
-    this.verificarPerfil("8.La contrasenya actual no es correcta.");
+    console.log("La contraseña actual no es correcta.");
+    this.verificarPerfil("9.La contrasenya actual no es correcta.");
   }
+
 }
 
 
