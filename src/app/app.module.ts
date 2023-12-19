@@ -8,7 +8,12 @@ import { PerfilComponent } from './perfil/perfil/perfil.component';
 import { JuegoComponent } from './juego/juego/juego.component';
 import { FinalJuegoComponent } from './juego/final-juego/final-juego.component';
 import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.component';
-
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environment';
+import { MenuNavComponent } from './menu-nav/menu-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,11 +22,16 @@ import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.comp
     PerfilComponent,
     JuegoComponent,
     FinalJuegoComponent,
-    AddPreguntaComponent
+    AddPreguntaComponent,
+    MenuNavComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,29 @@
+nav {
+    background: linear-gradient(90deg, #0097b2, #7ed957);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#userInfo a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+#userPhoto {
+    max-width: 40px;
+}
+
+#userName {
+    margin: 0;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
