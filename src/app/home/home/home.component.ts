@@ -13,6 +13,9 @@ export class HomeComponent {
   //EL CONSTRUCTOR PETA I NO PUC AGAFAR TOTA L'INFORMACIÓ DELS USUARIS 
   constructor(public home: HomeService) { }
 
+  ngOnInit(){
+    this.getUsuari();
+  }
   getUsuari(){
     this.home.getUsuari().subscribe((dades) => {
       localStorage.setItem('dadesUsuari', JSON.stringify(dades));

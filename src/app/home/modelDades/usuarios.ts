@@ -13,4 +13,5 @@ export class usuarios {
     ultimAcces?: string;
     baja?: boolean;
     solicituBaja?: string;
+    classe?: string;
 }
