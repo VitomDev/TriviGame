@@ -180,7 +180,7 @@
 }
 
 .btResDiv:active {
-  background-color: red;
+  background-color: rgb(131, 131, 255);
   transform: scale(0.95, 0.95);
 }
 

@@ -1,61 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" type="text/css" href="juego.component.css" />
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  </head>
-  <body class="h-screen body">
+  <div class="h-screen body" >
     <div class="global" *ngIf="!torn">
       <div id="contInfo">
-        <button id="btHome" (click)="redHome()">
+        <button id="btHome">
           <img src="/assets/drawable/trivigame_Logo.png" />
         </button>
-        <div id="puntsActuals"><p>230</p></div>
+        <div id="puntsActuals"><p>{{puntosUsuario}}</p></div>
       </div>
       <div class="containerR" id="contPregunta">
         <div id="pregL">
           <p id="txtPreg">
-            Quina estratègia s'enfoca a la inclusió financera i l'accés a
-            serveis financers per als més desafavorits?
+            {{pregunta?.pregunta}}
           </p>
         </div>
       </div>
       <div class="containerR">
         <div id="pregM">
           <p id="txtPreg">
-            Quina estratègia s'enfoca a la inclusió financera i l'accés a
-            serveis financers per als més desafavorits?
+            {{pregunta?.pregunta}}
           </p>
         </div>
         <div id="contR">
           <div id="contR1">
-            <button class="bnRes" (click)="respondida()">
-              <div class="btResDiv">Reduir la contaminació ambiental</div>
+
+
+            <button class="bnRes" (click)="aPulsado ? null : click(respuestasOrdenadas[0])">
+              <div class="btResDiv"
+              [ngClass]="{'respuestaVacio': respuestasOrdenadas[0] === '', 'c': respuestasOrdenadas[0] === respuestaCorrecta && aPulsado }"
+                  [ngStyle]="{'background-color': correcto === true && respuestasOrdenadas[0] === respuestaCorrecta ? 'lightgreen' : ''}"
+                  [ngStyle]="{'background-color': incorrectaPulsada === respuestasOrdenadas[0] && correcto === false ? 'lightcoral' : ''}">
+                {{respuestasOrdenadas[0]}}
+              </div>
             </button>
-            <button class="bnRes" (click)="respondida()">
-              <div class="btResDiv">
-                Eradicar la pobresa extrema i la pobresa relativa
+                      
+            <button class="bnRes" (click)="aPulsado ? null : click(respuestasOrdenadas[1])">              
+              <div class="btResDiv" 
+                  [ngClass]="{'respuestaVacio': respuestasOrdenadas[1] === '', 'c': respuestasOrdenadas[1] === respuestaCorrecta && aPulsado }"
+                  [ngStyle]="{'background-color': correcto === true && respuestasOrdenadas[1] === respuestaCorrecta ? 'lightgreen' : ''}"
+                  [ngStyle]="{'background-color': incorrectaPulsada === respuestasOrdenadas[1] && correcto === false ? 'lightcoral' : ''}">
+                {{respuestasOrdenadas[1]}}
               </div>
             </button>
           </div>
           <div id="contR2">
-            <button class="bnRes" (click)="respondida()">
-              <div class="btResDiv">
-                Augmentar el consum d'energies renovables
+            <button class="bnRes" (click)="aPulsado ? null : click(respuestasOrdenadas[2])">
+              <div class="btResDiv"
+              [ngClass]="{'respuestaVacio': respuestasOrdenadas[2] === '', 'c': respuestasOrdenadas[2] === respuestaCorrecta && aPulsado }"
+                  [ngStyle]="{'background-color': correcto === true && respuestasOrdenadas[2] === respuestaCorrecta ? 'lightgreen' : ''}"
+                  [ngStyle]="{'background-color': incorrectaPulsada === respuestasOrdenadas[2] && correcto === false ? 'lightcoral' : ''}">
+                {{respuestasOrdenadas[2]}}
               </div>
             </button>
-            <button class="bnRes" (click)="respondida()"> 
-              <div class="btResDiv">Millorar la infraestructura urbana</div>
+            <button class="bnRes" (click)="aPulsado ? null : click(respuestasOrdenadas[3])"> 
+              <div class="btResDiv"
+              [ngClass]="{'respuestaVacio': respuestasOrdenadas[3] === '', 'c': respuestasOrdenadas[3] === respuestaCorrecta && aPulsado }"
+                  [ngStyle]="{'background-color': correcto === true && respuestasOrdenadas[3] === respuestaCorrecta ? 'lightgreen' : ''}"
+                  [ngStyle]="{'background-color': incorrectaPulsada === respuestasOrdenadas[3] && correcto === false ? 'lightcoral' : ''}">
+                {{respuestasOrdenadas[3]}}
+              </div>
             </button>
           </div>
         </div>
@@ -63,8 +64,8 @@
       <div id="contPista">
         <a
           id="btPista"
-          href="https://www.un.org/sustainabledevelopment/es/climate-change-2/"
-          ><img src="/assets/drawable/category/accion_clima.png"
+          href={{url}}
+          ><img src={{imgurl}}
         /></a>
       </div>
     </div>
@@ -78,18 +79,55 @@
           </div>
           <div id="preg">
             <p>
-              Quina mesura es considera essencial per combatre la pobresa segons l'ODS?
+              {{pregunta?.pregunta}}
             </p>
           </div>
           <div id="progress_bar">
-            <div id="progress_fill" [ngClass]="{'fill-animation': true}" [style.width.%]="porcentajeAnimacion"></div>
+            <div id="progress_fill" [ngClass]="{'fill-animation': true}" ></div>
+            <!-- [style.width.%]="porcentajeAnimacion" -->
           </div>
           <p id="progress">{{numP}}/10</p>
         </div>
         <div id="buttonnextq">
-          <button id="nextQ" class="custom-btn btn-11" (click)="nextQuestion()">Següent pregunta!<div class="dot"></div></button>
+          <button id="nextQ" class="custom-btn btn-11" (click)="nextQuestion()" >Següent pregunta!<div class="dot"></div></button>
         </div>
       </div>
     </div>
-  </body>
-</html>
+
+<!-- <main> -->
+  <!-- <header>
+      <div id="containerPuntos">
+          <div>
+              <p id="puntos">PUNTS</p>
+          </div>
+          <div>
+              <p>0</p>
+          </div>
+      </div>
+  </header> -->
+<!-- 
+  <h1> {{ puntosUsuario }} </h1>
+  <h2> {{ dificultad }} </h2>
+  <button (click)="pedirPista()">Pedir Pista, total {{numPistes}}</button>
+  <button (click)="siguiente()" id="siguiente">Siguiente</button>
+  <div id="containerPregunta">
+      <div id="pregunta">
+          <h1> {{ randomIndex}} </h1>
+          <h1> {{pregunta?.pregunta}} </h1>
+      </div>
+      <div>
+          <ul>
+              <li class="respuestas" *ngFor="let r of respuestasOrdenadas" (click)="aPulsado ? null : click(r)"
+                  [ngClass]="{'respuestaVacio': r === '', 'c': r === respuestaCorrecta && aPulsado    }"
+                  [ngStyle]="{'background-color': correcto === true && r === respuestaCorrecta ? 'green' : ''}"
+                  [ngStyle]="{'background-color': incorrectaPulsada === r && correcto === false ? 'red' : ''}">
+                  {{ r }}
+              </li>
+
+          </ul>
+
+          <p>Racha {{racha}}</p>
+          <p>Preguntes contestades {{qttPreguntesContestades}}</p>
+      </div>
+  </div>
+</main> -->
