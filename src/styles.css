@@ -1,10 +1,164 @@
 /* You can add global styles to this file, and also import other style files */
-.bodyJuego {
-    background-image: url(./assets/drawable/StartGame.png);
+
+.bg1 {
+    background-color: #e5243b;
     background-size: cover;
   }
 
-.bodyMenu {
-    background-image: url(./assets/drawable/bkImg.png);
+.bg2 {
+    background-color: #dda63a;
     background-size: cover;
 }
+.bg3 {
+    background-color: #4c9f38;
+    background-size: cover;
+  }
+
+.bg4 {
+    background-color: #c5192d;
+    background-size: cover;
+}
+.bg5 {
+    background-color: #ff3a21;
+    background-size: cover;
+  }
+
+.bg6 {
+    background-color: #26bde2;
+    background-size: cover;
+}
+.bg7 {
+    background-color: #fcc30b;
+    background-size: cover;
+  }
+
+.bg8 {
+    background-color: #a21942;
+    background-size: cover;
+}
+.bg9 {
+    background-color: #fd6925;
+    background-size: cover;
+  }
+
+.bg10 {
+    background-color: #dd1367;
+    background-size: cover;
+}
+.bg11 {
+    background-color: #fd9d24;
+    background-size: cover;
+  }
+
+.bg12 {
+    background-color: #bf8b2e;
+    background-size: cover;
+}
+.bg13 {
+    background-color: #3f7e44;
+    background-size: cover;
+  }
+
+.bg14 {
+    background-color: #56c02b;
+    background-size: cover;
+}
+.bg15 {
+    background-color: #00689d;
+    background-size: cover;
+  }
+
+.bg16 {
+    background-color: #19486a;
+    background-size: cover;
+}
+.bg17 {
+    background-color: #ffcaca;
+    background-size: cover;
+  }
+
+
+  @property --border-angle-1 {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+  }
+  
+  @property --border-angle-2 {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 90deg;
+  }
+  
+  @property --border-angle-3 {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 180deg;
+  }
+  
+  
+  /* sRGB color. */
+  :root {
+    --bright-blue: rgb(0, 100, 255);
+    --bright-green: rgb(0, 255, 0);
+    --bright-red: rgb(255, 0, 0);
+    --background: black;
+    --background2: rgb(255, 255, 255);
+    --foreground: black;
+    --border-size: 2px;
+    --border-radius: 0.75em;
+  }
+  
+  /* Display-P3 color, when supported. */
+  @supports (color: color(display-p3 1 1 1)) {
+    :root {
+      --bright-blue: color(display-p3 0 0.2 1);
+      --bright-green: color(display-p3 0.4 1 0);
+      --bright-red: color(display-p3 1 0 0);
+    }
+  }
+  
+  @keyframes rotateBackground {
+    to { --border-angle-1: 360deg; }
+  }
+  
+  @keyframes rotateBackground2 {
+    to { --border-angle-2: -270deg; }
+  }
+  
+  @keyframes rotateBackground3 {
+    to { --border-angle-3: 540deg; }
+  }
+
+  
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-5px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+
+@keyframes shiny-btn1 {
+  0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+  80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+  81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+  100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
+}
+
+
+  
+@font-face {
+	font-family: "Aspekta";
+	font-weight: normal;
+	src: url("https://assets.codepen.io/240751/Aspekta-300.woff2") format("woff2");
+}
+
