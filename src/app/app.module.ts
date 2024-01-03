@@ -41,10 +41,15 @@ import { PerfilComponent } from './perfil/perfil/perfil.component';
 import { JuegoComponent } from './juego/juego/juego.component';
 import { FinalJuegoComponent } from './juego/final-juego/final-juego.component';
 import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.component';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database'
+
+
+
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from './environments/environment';
-// import { main } from 'src/main';
+import { environment } from 'src/environment';
+import { MenuNavComponent } from './menu-nav/menu-nav.component';
 
 @NgModule({
   declarations: [
@@ -55,11 +60,18 @@ import { environment } from './environments/environment';
     JuegoComponent,
     FinalJuegoComponent,
     AddPreguntaComponent,
+
+    MenuNavComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireDatabaseModule,
+
+    AngularFireStorageModule,
+    FormsModule,
+
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],

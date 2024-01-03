@@ -1,1 +1,92 @@
-<p>perfil works!</p>
+<head>
+  <meta charset="utf-8" />
+  <title>TriviGame</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<main>
+  <app-menu-nav></app-menu-nav>
+  <article class="flex flex-col md:flex-row justify-around mt-5 h-150">
+    <section id="uploadPhotoMenu" class="w-full md:w-4/12 lg:w-3/12 h-120 rounded-2xl flex flex-col justify-center items-center mb-4 md:mb-0">
+      <div class="dropzone w-full md:w-1/2 lg:w-1/4 h-auto border-2 border-dashed border-gray-300 rounded-full mx-auto overflow-hidden relative bg-cover bg-center bg-no-repeat"
+          style="background-image: url('{{ urlAvatar }}');"
+          (dragover)="onDragOver($event)"
+          (drop)="onDrop($event)">
+        <!-- La imagen se agrega como fondo con Tailwind CSS para el control de tamaño responsivo -->
+      </div>
+    </section>  
+    <section
+      id="changeParams"
+      class="w-full md:w-full lg:w-7/12 h-120 bg-gray-200 rounded-2xl flex flex-col justify-center items-start p-4">
+      <form id="formchangeParams" class="flex flex-col w-full">
+        <label for="changeName" class="mb-2">Canviar nom: </label>
+        <input
+          type="text"
+          name="changeName"
+          id="changeName"
+          placeholder="Min 3 caracteres"
+          class="border-gray-300 border-solid border-2 rounded-md mb-2 px-4 py-2 w-full"
+          [(ngModel)]="username"/>
+        <label for="changePass" class="mb-2">Canviar contrassenya: </label>
+        <input
+          type="password"
+          name="changePass"
+          id="changePass"
+          placeholder="Min 8 caracteres y mayus"
+          class="border-gray-300 border-solid border-2 rounded-md mb-2 px-4 py-2 w-full"
+          [(ngModel)]="contrasenya"/>
+          <label for="repeatPass" class="mb-2">Confirmar contrassenya: </label>
+          <input
+            type="password"
+            name="repeatPass"
+            id="repeatPass"
+            placeholder="Confirma la contrasenya"
+            class="border-gray-300 border-solid border-2 rounded-md mb-2 px-4 py-2 w-full"
+            [(ngModel)]="repeatedPassword"
+          />
+          <label for="confirmPass" class="mb-2">Contrassenya actual: </label>
+        <input
+          type="password"
+          name="confirmPass"
+          id="confirmPass"
+          class="border-gray-300 border-solid border-2 rounded-md mb-2 px-4 py-2 w-full"
+          [(ngModel)]="contrasenyaActual"/>
+        <input (click)="editProfile()"
+          type="submit"
+          value="Canviar"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer"/>
+      </form>
+      <div class="flex mt-5 w-full">
+        <input (click)="logout()"
+          type="submit"
+          value="Log out"
+          class="flex-1 bg-red-500 text-black px-4 py-2 rounded-md cursor-pointer"/>
+        <div class="w-4"></div> <!-- TODO: ponerlo en la confirmacion en el button aceptar de seguro que se quiere dar de baja? -->
+        <input (click)="ferDeleteProfile()"  
+          type="submit"
+          value="Delete profile"
+          class="flex-1 bg-red-500 text-black px-4 py-2 rounded-md cursor-pointer"/> 
+      </div>
+    </section>
+    <div *ngIf="popUp" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 shadow-md z-50 text-center">
+      <h2 class="text-2xl font-bold mb-4">{{ title }}</h2>
+      <div class="flex justify-center gap-16">
+        <input *ngIf="!failed" (click)="unsubscribe()"  
+        type="submit"
+        value="Acceptar"
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"/> 
+        <button (click)="closePopUp()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ buttonValue }}</button>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="bg-gradient-to-r from-green-500 to-blue-500 text-black p-4 text-center fixed bottom-0 w-full">
+  <p>&copy; 2023 TriviGames: Agenda 2030</p>
+  <a href="https://cads.gencat.cat/ca/Agenda_2030/index.html" target="_blank" class="inline-block mt-2">
+    <img src="../../../assets/img/logoWeb.png" alt="Logo Web oficial" class="w-16"/>
+  </a>
+</footer>
+

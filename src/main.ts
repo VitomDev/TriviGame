@@ -7,6 +7,7 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));
 
+
 // document.addEventListener('DOMContentLoaded', (event) => {
 //   let message: string = 'Hello, world!';
 //   console.log(message);
@@ -95,5 +96,6 @@ export class main {
           break;
       }
     }
+
   }
 }

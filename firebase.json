@@ -2,6 +2,16 @@
   "database": {
     "rules": "database.rules.json"
   },
+
+  "hosting": {
+    "public": "dist/TriviGame",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+
   "storage": {
     "rules": "storage.rules"
   }

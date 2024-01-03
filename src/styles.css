@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 .bg1 {
     background-color: #e5243b;
     background-size: cover;
@@ -160,3 +161,4 @@
 	font-weight: normal;
 	src: url("https://assets.codepen.io/240751/Aspekta-300.woff2") format("woff2");
 }
+
