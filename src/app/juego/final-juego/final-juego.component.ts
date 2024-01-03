@@ -6,5 +6,47 @@ import { Component } from '@angular/core';
   styleUrls: ['./final-juego.component.css']
 })
 export class FinalJuegoComponent {
+  puntos: string = "";
+  racha: string = "";
+  aciertos: string = "";
+
+  ngOnInit(): void {
+    this.cargarPuntosDesdeLocalStorage();
+    this.cargarRachaDesdeLocalStorage();
+    this.cargarAciertosDesdeLocalStorage();
+  }
+
+  private cargarPuntosDesdeLocalStorage(): void {
+    const puntosLocalStorage = localStorage.getItem("puntosLocalStorage");
+
+    if (puntosLocalStorage !== null) {
+      this.puntos = puntosLocalStorage;
+    } else {
+      console.error("No se encontraron puntos en el almacenamiento local.");
+      // Podrías manejar este caso de error de otra manera, dependiendo de tus necesidades.
+    }
+  }
+
+  private cargarRachaDesdeLocalStorage(): void {
+    const rachaLocalStorage = localStorage.getItem("mejorRachaLocalStorage");
+
+    if (rachaLocalStorage !== null) {
+      this.racha = rachaLocalStorage;
+    } else {
+      console.error("No se encontró la racha en el almacenamiento local.");
+      // Manejar este caso de error según tus necesidades.
+    }
+  }
+
+  private cargarAciertosDesdeLocalStorage(): void {
+    const aciertosLocalStorage = localStorage.getItem("qttAcertadasLocalStorage");
+
+    if (aciertosLocalStorage !== null) {
+      this.aciertos = aciertosLocalStorage;
+    } else {
+      console.error("No se encontraron aciertos en el almacenamiento local.");
+      // Manejar este caso de error según tus necesidades.
+    }
+  }
 
 }

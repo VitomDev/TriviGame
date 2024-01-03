@@ -3,33 +3,23 @@
 *{
     margin: 0px;
     padding: 0px;
+    /* border: 2px solid; */
 }
-
-body{
-    font-family: 'Exo', sans-serif;
-}
-
 
 .context {
-    width: 100%;
-    position: absolute;
-    top:50vh;
+    width: 100vw;
+    height: 100vh;
+    position: relative;   
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .context h1{
     text-align: center;
     color: #fff;
-    font-size: 50px;
-}
-
-
-.area{
-    background: #4e54c8;  
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
-    width: 100%;
-    height:100vh;
-    
-   
+    font-size: 2.3em;
+    margin-top: 5vh;
 }
 
 .circles{
@@ -147,70 +137,78 @@ body{
 
 }
 
-body {
-  font-family: "Open Sans", sans-serif;
+#bodyF {
+  font-family: 'Exo', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Centra verticalmente */
+  height: 100vh;
   width: 100vw;
+  background: #4e54c8;  
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
 }
-.credit-card-box {
-  perspective: 1000;
-  width: 250px;
-  height: 320px;
-  position: relative;
-}
-.credit-card-box:hover .flip,
-.credit-card-box.hover .flip {
-  transform: rotateY(180deg);
-}
-.credit-card-box .front,
-.credit-card-box .back {
-  width: 250px;
-  height: 320px;
-  border-radius: 15px;
-  backface-visibility: hidden;
-  background: linear-gradient(135deg, #5a61f1, #91e2dc);
-  position: absolute;
-  color: #fff;
-  font-family: Inconsolata;
-  top: 0;
-  left: 10vw;
 
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+#box {
+    overflow:auto;
 }
-.credit-card-box .front::before,
-.credit-card-box .back::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 10vw;
-  background: no-repeat center;
-  background-size: cover;
-  opacity: 0.05;
+
+.card {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    background-color: black;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
 }
-.credit-card-box .flip {
-  transition: 0.6s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-.credit-card-box .front {
-  z-index: 2;
-  transform: rotateY(0deg);
-}
-.credit-card-box .back {
-  transform: rotateY(180deg) translateX(300px);
-} 
+
+.card:before {
+    height: 300px;
+    width: 300px;
+    background: conic-gradient(rgb(58, 255, 0.85) 20deg, transparent 120deg);
+    transform-origin: center;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: spin 4s linear infinite;
+  }
+  
+  .card:after {
+    height: 140px;
+    width: 140px;
+    background-color: black;
+    content: "";
+    position: absolute;
+    top: calc(50% - 70px);
+    left: 50%;
+    transform: translate(-50%);
+  }
+  
+  @keyframes spin {
+    to {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+    from {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
 #puntuacion {
+    margin-top: 5vh;
+    margin-left: 4vw;
+    margin-right: 4vw;
     background-color: #84b6f4;
     border-radius: 30px;
+    position: relative;
+    z-index: 1;
 }
 
 #numP {
+    position: relative;
+    z-index: 1;
     display: inline-block;
     border-radius: 50%;
     background-color: #84b6f4;
@@ -225,3 +223,59 @@ body {
     margin-top: 2vh;
     margin-bottom: 2vh;
 } 
+
+#racha {
+    margin-top: 5vh;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    position: relative;
+    z-index: 1;
+    background-color: #ff6961;
+    border-radius: 30px;
+}
+
+#numR {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #ff6961;
+    font-size: 1.5em; 
+    padding: 0.5em;
+    text-align: center; 
+    line-height: 1em; 
+    min-width: 2em; 
+    min-height: 2em; 
+}
+
+#aciertos {
+    margin-top: 5vh;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    position: relative;
+    z-index: 1;
+    background-color: #77dd77;
+    border-radius: 30px;
+}
+
+#numA {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #77dd77;
+    font-size: 1.5em; 
+    padding: 0.5em;
+    text-align: center; 
+    line-height: 1em; 
+    min-width: 2em;
+    min-height: 2em;
+}
+
+.boton {
+    border: 2px solid;
+    background-color: blueviolet;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 3vh;
+}

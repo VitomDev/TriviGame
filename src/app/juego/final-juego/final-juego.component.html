@@ -8,26 +8,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Document</title>
   </head>
-  <body>
-
+  <div id="bodyF">
     <div class="context">
       <h1>Puntuaciones!</h1>
-      <div class="credit-card-box">
-        <div class="flip">
-          <div class="front"></div>
-          <div class="back">
-            <div>
-              <p id="puntuacion">Puntuació</p>
-              <div id="numP" class="punc">
-                <p>57</p>
+      <div id="box">
+        <div class="card">
+              <div>
+                <p id="puntuacion">Puntuació</p>
+                <div id="numP" class="punc">
+                  <p>{{puntos}}</p>
+                </div>
               </div>
             </div>
-          </div>
+        <div class="card">
+              <div>
+                <p id="racha">Racha</p>
+                <div id="numR" class="punc">
+                  <p>{{racha}}</p>
+                </div>
+              </div>
+        </div>
+        <div class="card">
+              <div>
+                <p id="aciertos">Aciertos</p>
+                <div id="numA" class="punc">
+                  <p>{{aciertos}}</p>
+                </div>
+              </div>
+        </div>
+        <div class="boton">
+          <button>Return Home</button>
         </div>
       </div>
-    </div>
-
-    <div class="area">
+    </div> 
+    <div>
       <ul class="circles">
         <li></li>
         <li></li>
@@ -41,19 +55,5 @@
         <li></li>
       </ul>
     </div>
-
-    <!-- <div class="credit-card-box">
-      <div class="flip">
-        <div class="front"></div>
-        <div class="back">
-          <div>
-            <p id="puntuacion">Puntuació</p>
-            <div id="numP" class="punc">
-              <p>57</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-  </body>
+  </div>
 </html>
