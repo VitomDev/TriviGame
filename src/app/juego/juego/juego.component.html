@@ -7,7 +7,7 @@
         <img src="/assets/drawable/trivigame_Logo.png" />
       </button>
       <div id="puntsActuals">
-        <p>{{ puntosUsuario }}</p>
+        <p>{{ puntosLocalStorage }}</p>
       </div>
     </div>
     <div class="containerR" id="contPregunta">
@@ -183,6 +183,7 @@
           <div
             id="progress_fill"
             [ngClass]="{ 'fill-animation': true }"
+            
             [style.width.%]="porcentajeAnimacion"
           ></div>
           <!-- [style.width.%]="porcentajeAnimacion" -->

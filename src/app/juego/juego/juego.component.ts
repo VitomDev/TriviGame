@@ -91,7 +91,7 @@ export class JuegoComponent {
   mejorRachaLocalStorage: any;
   qttPiestasUsadas: number = 0;
 
-  porcentajeAnimacion: number = this.qttPreguntesContestades * 10;
+  porcentajeAnimacion: number = 0;
 
   correcto: boolean = false;
   incorrectaPulsada: string | undefined;
@@ -173,6 +173,8 @@ export class JuegoComponent {
     const binaryData = atob(base64Image);
 
     const imageSize = binaryData.length;
+
+    this.porcentajeAnimacion = this.qttPreguntesContestades * 10;
 
     console.log(`El tamaño de la imagen es ${imageSize} bytes.`);
     console.log(`El tamaño de la imagen es ${imageSize / (1024 * 1024)} MB.`);
