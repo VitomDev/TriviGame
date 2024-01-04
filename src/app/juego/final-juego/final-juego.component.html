@@ -1,59 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" type="text/css" href="final-juego.component.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <title>Document</title>
-  </head>
-  <div id="bodyF">
-    <div class="context">
-      <h1>Puntuaciones!</h1>
-      <div id="box">
-        <div class="card">
-              <div>
-                <p id="puntuacion">Puntuació</p>
-                <div id="numP" class="punc">
-                  <p>{{puntos}}</p>
-                </div>
-              </div>
-            </div>
-        <div class="card">
-              <div>
-                <p id="racha">Racha</p>
-                <div id="numR" class="punc">
-                  <p>{{racha}}</p>
-                </div>
-              </div>
-        </div>
-        <div class="card">
-              <div>
-                <p id="aciertos">Aciertos</p>
-                <div id="numA" class="punc">
-                  <p>{{aciertos}}</p>
-                </div>
-              </div>
-        </div>
-        <div class="boton">
-          <button>Return Home</button>
+<div id="bodyF">
+  <div class="context">
+    <h1>Puntuaciones!</h1>
+    <div id="box">
+      <div class="card">
+        <div>
+          <p id="puntuacion">Puntuació</p>
+          <div id="numP" class="punc">
+            <p>{{ puntos }}</p>
+          </div>
         </div>
       </div>
-    </div> 
-    <div>
-      <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
+      <div class="card">
+        <div>
+          <p id="racha">Racha</p>
+          <div id="numR" class="punc">
+            <p>{{ racha }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <p id="aciertos">Aciertos</p>
+          <div id="numA" class="punc">
+            <p>{{ aciertos }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="boton">
+      <button class="btn-hover color-7" (click)="redirigir()">Acabar Partida</button>
     </div>
   </div>
-</html>
+
+  <div id="bgBody"></div>
+    <ul id="containerFondo">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+</div>

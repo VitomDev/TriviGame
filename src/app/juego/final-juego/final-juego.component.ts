@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-final-juego',
@@ -10,10 +11,17 @@ export class FinalJuegoComponent {
   racha: string = "";
   aciertos: string = "";
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
     this.cargarPuntosDesdeLocalStorage();
     this.cargarRachaDesdeLocalStorage();
     this.cargarAciertosDesdeLocalStorage();
+  }
+
+  redirigir() {
+    // Utiliza el método navigate del servicio Router para redirigir a otra ruta
+    this.router.navigate(['/home']);
   }
 
   private cargarPuntosDesdeLocalStorage(): void {
