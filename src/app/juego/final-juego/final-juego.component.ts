@@ -21,7 +21,7 @@ export class FinalJuegoComponent {
 
   redirigir() {
     // Utiliza el método navigate del servicio Router para redirigir a otra ruta
-    this.router.navigate(['/home']);
+    this.router.navigate(['/perfil']);
   }
 
   private cargarPuntosDesdeLocalStorage(): void {

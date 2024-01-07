@@ -170,6 +170,8 @@
     /* padding-bottom: 5em; */
     display: flex;
     flex-direction: column;
+    /* border: solid 1px yellow; */
+
 }
 
 .card {
@@ -214,7 +216,18 @@
     left: 50%;
     transform: translate(-50%);
     border-radius: 15px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
 
+  .contIn{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1em;
   }
   
   @keyframes spin {
@@ -226,38 +239,40 @@
     }
   }
 #puntuacion {
-    margin-top: 5vh;
-    margin-left: 4vw;
-    margin-right: 4vw;
+    /* margin-top: 5vh; */
+    /* margin-left: 4vw; */
+    /* margin-right: 4vw; */
     background-color: #84b6f4;
     border-radius: 30px;
-    position: relative;
+    /* position: relative; */
+    padding: 0.5em;
     z-index: 1;
     font-weight: bold;
 }
 
 #numP {
-    position: relative;
+    /* position: relative; */
     z-index: 1;
-    display: inline-block;
+    /* display: inline-block; */
     border-radius: 50%;
     background-color: #84b6f4;
     font-size: 1.5em; 
     padding: 0.5em;
     text-align: center; 
     line-height: 1em; 
-    min-width: 2em; 
-    min-height: 2em; 
+    /* min-width: 2em;  */
+    /* min-height: 2em;  */
 }
-.punc {
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-} 
+/* .punc { */
+    /* margin-top: 2vh; */
+    /* margin-bottom: 2vh; */
+/* }  */
 
 #racha {
-    margin-top: 5vh;
-    margin-left: 4vw;
-    margin-right: 4vw;
+    /* margin-top: 5vh; */
+    /* margin-left: 4vw; */
+    /* margin-right: 4vw; */
+    padding: 0.5em;
     position: relative;
     z-index: 1;
     background-color: #ff6961;
@@ -266,23 +281,24 @@
 }
 
 #numR {
-    position: relative;
+    /* position: relative; */
     z-index: 1;
-    display: inline-block;
+    /* display: inline-block; */
     border-radius: 50%;
     background-color: #ff6961;
     font-size: 1.5em; 
     padding: 0.5em;
     text-align: center; 
     line-height: 1em; 
-    min-width: 2em; 
-    min-height: 2em; 
+    /* min-width: 2em;  */
+    /* min-height: 2em;  */
 }
 
 #aciertos {
-    margin-top: 5vh;
-    margin-left: 4vw;
-    margin-right: 4vw;
+    /* margin-top: 5vh; */
+    /* margin-left: 4vw; */
+    /* margin-right: 4vw; */
+    padding: 0.5em;
     position: relative;
     z-index: 1;
     background-color: #77dd77;
@@ -291,17 +307,17 @@
 }
 
 #numA {
-    position: relative;
+    /* position: relative; */
     z-index: 1;
-    display: inline-block;
+    /* display: inline-block; */
     border-radius: 50%;
     background-color: #77dd77;
     font-size: 1.5em; 
     padding: 0.5em;
     text-align: center; 
     line-height: 1em; 
-    min-width: 2em;
-    min-height: 2em;
+    /* min-width: 2em; */
+    /* min-height: 2em; */
 }
 
 /* .boton {
@@ -397,9 +413,76 @@
 
     #box{
         flex-direction: row;
+        height: 20em;
+        /* justify-content: center; */
+        align-items: center;
+        /* border: solid yellow 1px; */
     }
 
     .context{
         justify-content: space-around;
+    }
+
+
+    .card {
+        width: 30%;
+        height:90%;
+        
+    }
+    
+    .card:before {
+        height: 300%;
+        width: 300%;
+      }
+      
+      .card:after {
+        height: 95%;
+        width: 95%;
+        /* background-color: rgb(223, 241, 255); */
+        /* content: ""; */
+        position: absolute;
+        top: calc(50% - 47.5%);
+        left: 50%;
+        transform: translate(-50%);
+        /* border-radius: 15px; */
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+      }
+
+    .contIn{
+        height: 100%;
+        width: 100%;
+        padding-block: 2em;
+    }
+
+    #puntuacion {
+        /* margin-top: 13vh; */
+        /* margin-bottom: 7vh; */
+        font-size: 2em;
+    }
+    
+    #numP {
+        font-size: 4em;
+    }
+    
+    #racha {
+        /* margin-top: 13vh; */
+        /* margin-bottom: 7vh; */
+        font-size: 2em;
+    }
+    
+    #numR {
+        font-size: 4em;
+    }
+    
+    #aciertos {
+        /* margin-top: 13vh; */
+        /* margin-bottom: 7vh; */
+        font-size: 2em;
+    }
+    
+    #numA {
+        font-size: 4em;
     }
 }
