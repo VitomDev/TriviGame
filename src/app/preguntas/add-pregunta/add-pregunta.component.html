@@ -1,1 +1,66 @@
-<p>add-pregunta works!</p>
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-12 text-center">
+        <img src="../../../assets/logoTrivi.png" alt="logo imagen" class="img-fluid smaller-logo">
+      </div>
+    </div>
+
+    <div class="row englobar">
+      <div class="col-md-6">
+        <div class="lorem-container">
+          <textarea id="text-area" name="pregunta" class="form-control text-dark border-0" placeholder="Escriu la pregunta" [(ngModel)]="entrada.pregunta"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="select-container">
+          <select id="opciones" name="categoria" class="form-control rounded-pill mb-3 custom-select text-dark" [(ngModel)]="entrada.categoria">
+            <option value="" disabled selected>Categoria</option>
+            <option value="opcion1">SALUT I BENESTAR</option>
+            <option value="opcion2">EDUCACIÓ DE QUALITAT</option>
+            <option value="opcion3">FI DE LA POBRESA</option>
+            <option value="opcion4">ENERGIA ASSEQUIBLE I NO CONTAMINANT</option>
+            <option value="opcion5">FAM ZERO</option>
+            <option value="opcion6">IGUALTAT DE GÈNERE</option>
+            <option value="opcion7">AIUGA, NETEJA I BENESTAR</option>
+            <option value="opcion8">TREBALL DECENT I CREIXEMENT ECONÒMIC</option>
+            <option value="opcion9">INDUSTRIA, INNOVACIÓ I INFRAESTRUCTURA</option>
+            <option value="opcion10">REDUCCIÓ DE LES DESIGUALTATS</option>
+            <option value="opcion11">CIUTATS I COMUNITATS SOSTENIBLES</option>
+            <option value="opcion12">PRODUCCIÓ I CONSUM RESPONSABLES</option>
+            <option value="opcion13">CIUTATS I COMUNITATS SOSTENIBLES</option>
+            <option value="opcion14">ACCIÓ PEL CLIMA</option>
+            <option value="opcion15">VIDA SUBMARINA</option>
+            <option value="opcion16">VIDA D'ECOSISTEMES TERRESTRES</option>
+            <option value="opcion17">PAU, JUSTÍCIA I INSTITUCIONS SÒLIDES</option>
+            <option value="opcion18">ALIANCES PER ACONSEGUIR ELS OBJECTIUS</option>
+
+          </select>
+
+          <select id="dificultad" name="dificultad" class="form-control rounded-pill mb-3 custom-select text-dark" [(ngModel)]="entrada.dificultad">
+            <option value="" disabled selected>Dificultat</option>
+            <option value="opcion1">Fàcil</option>
+            <option value="opcion2">Mitjana</option>
+            <option value="opcion3">Dificil</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row englobar">
+      <div class="col-md-6">
+        <input class="form-control rounded-pill m-2 text-center " name="opcioCorrecta" id="OpcionCorrecta" placeholder="Introdueix la opcio correcta" [(ngModel)]="entrada.opcioCorrecta">
+        <input class="form-control rounded-pill m-2 text-center mi-clase-color" placeholder="Introdueix altre opcio" name="opcioIncorrecta1" [(ngModel)]="entrada.opcioIncorrecta1">
+      </div>
+      <div class="col-md-6">
+        <input class="form-control rounded-pill m-2 text-center mi-clase-color border-warning " placeholder="Introdueix altre opcio" name="opcioIncorrecta2" [(ngModel)]="entrada.opcioIncorrecta2">
+        <input class="form-control rounded-pill m-2 text-center mi-clase-color border-warning" placeholder="Introdueix altre opcio" name="opcioIncorrecta3" [(ngModel)]="entrada.opcioIncorrecta3">
+      </div>
+    </div>
+
+    <div class="row englobar">
+      <div class="col-md-12 text-center ">
+        <button class="btn btn-lg btn-outline-info rounded-pill" (click)="guardarEntrada()">Guardar</button>
+      </div>
+    </div>
+  </div>

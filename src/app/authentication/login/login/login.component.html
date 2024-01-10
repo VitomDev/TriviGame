@@ -1,1 +1,21 @@
-<p>login works!</p>
+<!-- <div id="modal_div">
+    <p>a</p>
+</div> -->
+<section class="vh-100 gradient-custom" *ngIf="!serveiAutenticar.loginOK">
+        <div id="container">
+            <div id="login_container" class="bg-transparent">
+                <img src="../../../../assets/drawable/logo.png" alt="Logo Trivigame" id="logo" class="img-fluid">
+                <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="usr"/>
+                <input type="password" class="form-control" placeholder="Contrasenya" [(ngModel)]="psw" />
+                <a href="#" class="d-block text-left mb-3">Has oblidat la teva contrasenya?</a>
+                <div class="button-container">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <a href="/register" class="btn btn-secondary" id="registerButton">Registrar-se</a>
+                </div>
+            </div>
+        </div>
+
+</section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

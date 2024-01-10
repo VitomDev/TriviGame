@@ -1,0 +1,93 @@
+.lorem-container {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    height: 20vh;
+  }
+  
+  .select-container {
+    margin-top: 20px;
+  }
+  
+  .estiloResuestas {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .englobar {
+    margin-top: 20px;
+  
+  }
+  
+  #text-area {
+  
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    word-wrap: break-word;
+    /* Agrega esta línea para permitir el salto de línea */
+    overflow: auto;
+  }
+  
+  #text-area::placeholder {
+    text-align: center;
+    font-size: 30px;
+  
+  }
+  
+  .mi-clase-color {
+    background-color: #ff6961;
+    color: black;
+  }
+  
+  /* #OpcionCorrecta {
+    background-color: #77dd77;
+    border: green;
+    color: black;
+  }
+  
+  #opcionCorrecta:focus {
+    box-shadow: 0 0 5px rgb(15, 133, 0);
+    outline: none;
+  }
+  */
+  #OpcionCorrecta {
+    background-color: #77dd77;
+    color: #000;
+  }
+  
+  #OpcionCorrecta:focus, input:focus {
+    box-shadow: 0 0 5px #000;
+  }
+  
+  /* Quita el borde azul claro al seleccionar un elemento select */
+  select:focus {
+    outline: none;
+    border-color: initial;
+    box-shadow: none;
+    border: solid 3px #17a2b8;
+  }
+  
+  
+  input {
+    border: none;
+  }
+  
+  input::placeholder {
+    text-align: center;
+    color: #202223;
+  }
+  
+  input:focus {
+    box-shadow: 0 0 5px rgb(110, 3, 3);
+    /* Otras propiedades opcionales para resaltar */
+    outline: none;
+    /* Elimina el resaltado predeterminado del navegador */
+  }
+  
+   textarea:focus {
+    border: none;
+    outline: black;
+    box-shadow: 0 0 0 2px #17a2b8;
+  }

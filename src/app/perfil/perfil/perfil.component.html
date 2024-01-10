@@ -1,14 +1,6 @@
-<head>
-  <meta charset="utf-8" />
-  <title>TriviGame</title>
-  <base href="/" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<main>
+<div>
   <app-menu-nav></app-menu-nav>
-  <article class="flex flex-col md:flex-row justify-around mt-5 h-150">
+  <article class="flex flex-col md:flex-row justify-around  h-150">
     <section id="uploadPhotoMenu" class="w-full md:w-4/12 lg:w-3/12 h-120 rounded-2xl flex flex-col justify-center items-center mb-4 md:mb-0">
       <div class="dropzone w-full md:w-1/2 lg:w-1/4 h-auto border-2 border-dashed border-gray-300 rounded-full mx-auto overflow-hidden relative bg-cover bg-center bg-no-repeat"
           style="background-image: url('{{ urlAvatar }}');"
@@ -81,12 +73,13 @@
       </div>
     </div>
   </article>
-</main>
-
-<footer class="bg-gradient-to-r from-green-500 to-blue-500 text-black p-4 text-center fixed bottom-0 w-full">
-  <p>&copy; 2023 TriviGames: Agenda 2030</p>
-  <a href="https://cads.gencat.cat/ca/Agenda_2030/index.html" target="_blank" class="inline-block mt-2">
-    <img src="../../../assets/img/logoWeb.png" alt="Logo Web oficial" class="w-16"/>
-  </a>
-</footer>
-
+  
+  <footer class="bg-gradient-to-r from-green-500 to-blue-500 text-black p-4 text-center fixed bottom-0 w-full">
+    <p>&copy; 2023 TriviGames: Agenda 2030</p>
+    <a href="https://cads.gencat.cat/ca/Agenda_2030/index.html" target="_blank" class="inline-block mt-2">
+      <img src="../../../assets/img/logoWeb.png" alt="Logo Web oficial" class="w-16"/>
+    </a>
+  </footer>
+  
+  
+</div>

@@ -42,14 +42,14 @@ import { JuegoComponent } from './juego/juego/juego.component';
 import { FinalJuegoComponent } from './juego/final-juego/final-juego.component';
 import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.component';
 
-
-
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environment';
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
+import { LoginComponent } from './authentication/login/login/login.component';
+import { TutorialComponent } from './tutorial/tutorial.component';
 
 @NgModule({
   declarations: [
@@ -60,9 +60,10 @@ import { MenuNavComponent } from './menu-nav/menu-nav.component';
     JuegoComponent,
     FinalJuegoComponent,
     AddPreguntaComponent,
-
-    MenuNavComponent
-
+    MenuNavComponent,
+    LoginComponent,
+    TutorialComponent,
+    
   ],
   imports: [
     BrowserModule,

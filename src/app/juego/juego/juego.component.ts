@@ -106,6 +106,9 @@ export class JuegoComponent {
   }
 
   ngOnInit(): void {
+
+    
+
     // Consige todas las preguntas de la base de datos
     this.getPreguntes();
 
@@ -278,7 +281,7 @@ export class JuegoComponent {
         this.racha++;
         this.puntosUsuario = this.puntosUsuario + this.puntos;
 
-        if (this.qttPreguntesContestades < 10) {
+        if (this.qttPreguntesContestades <= 10) {
           this.puntosLocalStorage = this.puntos + this.puntosLocalStorage;
           localStorage.setItem(
             'puntosLocalStorage',

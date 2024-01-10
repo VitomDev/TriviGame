@@ -194,7 +194,7 @@
 .card:before {
     height: 300px;
     width: 300px;
-    background: conic-gradient(rgb(58, 255, 0.85) 20deg, transparent 120deg);
+    background: conic-gradient(#fe9923 20deg, transparent 120deg);
     transform-origin: center;
     content: "";
     position: absolute;

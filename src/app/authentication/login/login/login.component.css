@@ -1,0 +1,62 @@
+#container {
+    background-color: #B7E6FC;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login_container {
+    padding: 20px;
+    width: 600px;
+    text-align: center;
+}
+
+#login_container input {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#login_container button {
+    border-radius: 20px;
+    height: 40px;
+    width: 48%; /* Ajusta el ancho según tu preferencia y espacio disponible */
+    color: black;
+}
+
+#login_container a {
+    border-radius: 20px;
+    height: 40px;
+    width: 48%; /* Ajusta el ancho según tu preferencia y espacio disponible */
+}
+
+#logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Estilos CSS existentes */
+#modal_div {
+    background-color: #B7E6FC;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    visibility: hidden;
+}

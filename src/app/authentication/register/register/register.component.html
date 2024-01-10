@@ -1,1 +1,31 @@
-<p>register works!</p>
+<div id="container">
+    <div id="registre_container" class="bg-transparent">
+        <img src="../../../../assets/drawable/logo.png" alt="Logo Trivigame" id="logo" class="img-fluid">
+        <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="username">
+        <input type="text" class="form-control" placeholder="Email (@educem.net)" [(ngModel)]="correu">
+        <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="contrasenya" required>
+        <input type="password" class="form-control" placeholder="Repetir Contrasenya" [(ngModel)]="contrasenya2" required>
+        <select name="opciones" [(ngModel)]="classe">
+            <option value="ASIX">ASIX</option>
+            <option value="DAM">DAM</option>
+            <option value="SMX">SMX</option>
+            <option value="FAR">FAR</option>
+            <option value="AIF">AIF</option>
+            <option value="TEI">TEI</option>
+          </select>
+        <form action="#">
+            <label class="checkbox-label">
+                <input type="checkbox" id="acceptPrivacy" name="acceptPrivacy">
+                <a href="https://policies.google.com/privacy?hl=es">Acepto condiciones y política de privacidad</a>
+            </label>
+            <div class="button-container">
+                <button class="btn btn-primary buttons" type="submit" (click)="crearUsuari">Crear Compte</button>
+                <a href="#" class="btn btn-secondary buttons">Cancelar</a>
+            </div>
+        </form>
+    </div>  
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
