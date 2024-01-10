@@ -443,6 +443,7 @@ border: 2px solid;
   /* padding: 2em; */
   border: 4px solid white;
   display: flex;
+  flex-direction: column;
   /* flex-direction: column; */
   /* flex-direction: row; */
   /* padding: 2em; */
@@ -461,6 +462,14 @@ border: 2px solid;
   /* margin-block: 30%; */
   /* height: fit-content; */
   /* height: 80%; */
+}
+
+#puntosGanados {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }
 
 /* ----------- */
@@ -546,6 +555,15 @@ border: 2px solid;
     /* height: fit-content; */
     /* height: 80%; */
   }
+
+  #puntosGanados {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  
 
   /* #containerP {
       height: 80%;

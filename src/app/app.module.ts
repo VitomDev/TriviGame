@@ -69,10 +69,8 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireDatabaseModule,
-
     AngularFireStorageModule,
     FormsModule,
-
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],

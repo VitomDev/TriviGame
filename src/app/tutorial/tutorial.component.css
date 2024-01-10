@@ -1,13 +1,103 @@
-#containerTutorial{
-    height: 100vh;
-    width: 100vw;
+#containerTutorial {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-inline: 2em;
+  /* background-image: url("/src/assets/drawable/StartGame.png"); */
+}
+
+#containerPistas,
+#containerMaxPDia,
+#containerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: solid rgb(194, 194, 194) 2px; */
+  padding: 1em;
+  border-radius: 15px;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  height: 5em;
+  width: fit-content;
+}
+
+p {
+  width: 100%;
+  text-align: center;
+  font-size: 0.75em;
 }
 
 
 
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #88f3ff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: rgba(156, 237, 255, 0.221);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* 16 */
+.btn-16 {
+  border: none;
+  color: #000;
+}
+.btn-16:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.btn-16:hover {
+  color: #000;
+}
+.btn-16:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.btn-16:active {
+  top: 2px;
+}
 
 @media only screen and (min-width: 810px) {
+  #containerPistas,
+  #containerMaxPDia,
+  #containerInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align-items: center; */
+  }
 
+  p {
+    width: auto;
+    margin-left: 2em;
+    font-size: 1.2em;
+  }
 
 
 }

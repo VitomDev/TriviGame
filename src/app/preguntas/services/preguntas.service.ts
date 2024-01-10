@@ -33,14 +33,14 @@ export class PreguntasService {
     };
     
     this.bd
-      .object(this.bdPreguntas + entrada.pregunta)
-      .update(dades)
-      .then((d) => {
-        console.log('Dades modificades correctament');
-      })
-      .catch((error) => {
-        console.log('Error accedint al Log');
-      });
+      // .object(this.bdPreguntas + entrada.pregunta)
+      // .update(dades)
+      // .then((d) => {
+        // console.log('Dades modificades correctament');
+      // })
+      // .catch((error) => {
+        // console.log('Error accedint al Log');
+      // });
   }
 
 }

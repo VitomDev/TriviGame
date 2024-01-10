@@ -69,6 +69,7 @@ export class JuegoComponent {
   numPistes: number = 2;
   dificultad?: string;
 
+  puntosMostrar: number = 0;
   puntos: number = 100;
 
   buttonNQ: boolean = true;
@@ -281,6 +282,9 @@ export class JuegoComponent {
         this.racha++;
         this.puntosUsuario = this.puntosUsuario + this.puntos;
 
+        // Variable para mostrar puntuacion ganada por pantalla
+        this.puntosMostrar = this.puntos; 
+
         if (this.qttPreguntesContestades <= 10) {
           this.puntosLocalStorage = this.puntos + this.puntosLocalStorage;
           localStorage.setItem(
@@ -321,6 +325,9 @@ export class JuegoComponent {
         this.aPulsado = true;
         this.correcto = false;
         this.incorrectaPulsada = r;
+
+        // Variable mostrar 0 puntos ganados por pantalla
+        this.puntosMostrar = 0;
 
         // alert('Incorrecte');
 
