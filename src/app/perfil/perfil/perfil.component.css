@@ -1,6 +1,6 @@
 .dropzone {
-  width: 26vw; /* Ajusta al ancho que desees */
-  height: 26vw; /* Ajusta a la altura que desees */
+  width: 28vw; /* Ajusta al ancho que desees */
+  height: 28vw; /* Ajusta a la altura que desees */
   border: 2px dashed #ccc;
   border-radius: 10px;
   padding: 20px;
@@ -23,6 +23,6 @@
   border-radius: 50%; /* Para mantener la forma circular */
   }
 
-  *{
+  /* *{
     border: solid red 1px
-  }
+  } */

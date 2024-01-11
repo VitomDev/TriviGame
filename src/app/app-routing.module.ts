@@ -7,6 +7,7 @@ import { AddPreguntaComponent } from './preguntas/add-pregunta/add-pregunta.comp
 import { LoginComponent } from './authentication/login/login/login.component';
 import { RegisterComponent } from './authentication/register/register/register.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
+import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'add-pregunta', component: AddPreguntaComponent}, //TODO:QUE COINCIDA LA DIRECCION PARA EN PERFIL REDIRECCIONAR CORRECTAMENTE
   {path: 'juego', component: JuegoComponent},
   {path: 'final', component: FinalJuegoComponent},
-  {path: 'tutorial', component: TutorialComponent}
+  {path: 'tutorial', component: TutorialComponent},
+  {path: 'home', component: HomeComponent}
 
 ];
 

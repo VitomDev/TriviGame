@@ -1,6 +1,6 @@
 <nav class="text-black p-4 flex justify-between items-center">
     <div class="flex items-center">
-        <a href="../perfil/perfil/perfil.component.html" class="flex items-center space-x-2 text-lg"><!-- TODO:PORQUE EL HREF?? SI LE DAS ENCIMA DEL USERNAME PETA -->
+        <a (click)="home()" class="flex items-center space-x-2 text-lg"><!-- TODO:PORQUE EL HREF?? SI LE DAS ENCIMA DEL USERNAME PETA -->
             <img src="{{ urlAvatar }}" alt="User Photo" class="w-8 h-8 rounded-full">
             <h2 class="font-semibold">{{ username }}</h2>
         </a>

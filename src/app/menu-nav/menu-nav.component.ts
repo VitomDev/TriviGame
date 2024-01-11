@@ -36,4 +36,8 @@ export class MenuNavComponent implements OnInit{
     this.router.navigateByUrl('/add-pregunta');   
   }
 
+  home(){
+    this.router.navigate(['/home']);
+  }
+
 }
